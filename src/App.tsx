@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import ToppingsSelect from './components/ToppingsSelect';
 import type {ITopping} from './models/Topping';
 import './style.css';
@@ -78,6 +79,13 @@ const toppings: ITopping[] = [
 ];
 
 const App = () => {
+
+  const [pizzaToppings, setPizzaToppings] = useState<ITopping[]>(toppings)
+
+  const handleToppingsChange = (newToppings: ITopping[]) => {
+    setPizzaToppings(newToppings)
+  }
+
   return (
     <div className="container">
       <header>
@@ -85,7 +93,7 @@ const App = () => {
         <h1>Build your own pizza</h1>
       </header>
       <main>
-        <ToppingsSelect toppings={toppings} />
+        <ToppingsSelect toppings={pizzaToppings} onToppingsChange={handleToppingsChange} />
       </main>
     </div>
   );

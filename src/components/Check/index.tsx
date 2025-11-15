@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
 import './style.css';
 
-const Check = ()  => {
-  const [checked, setChecked] = useState(false);
+interface CheckProps {
+  onCheckChange: (newCheck: boolean) => void
+  checked: boolean
+}
+
+const Check = ({onCheckChange, checked}: CheckProps)  => {
 
   const handleClick = () => {
-    setChecked(!checked);
+    onCheckChange(!checked);
   };
 
   return (
